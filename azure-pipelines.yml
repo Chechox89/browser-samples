@@ -1,4 +1,13 @@
 # Maven package Java project Web App to Linux on Azure
+- task: AzureFunctionApp@1
+  inputs:
+    azureSubscription: 'MAIC - TEK Experts CR - v-doort - Group#1(9e9e1a84-e844-4b3c-a731-23d189b43a2e)'
+    appType: 'functionAppLinux'
+    appName: 'crulateAzFunc'
+    deployToSlotOrASE: true
+    resourceGroupName: 'crulateAzureFunction'
+    slotName: 'production'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
 # Build your Java project and deploy it to Azure as a Linux web app
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
