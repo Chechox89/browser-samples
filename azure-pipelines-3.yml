@@ -10,10 +10,12 @@
       runOnce:
         deploy:
           steps:
-          - task: AzureFunctionApp@1
-            displayName: Azure functions app deploy
-            inputs:
-              azureSubscription: bdcad02e-9258-4851-82a8-f4e8c46f48ef
-              appType: functionApp
-              appName: fa-communication-api-dev
-              package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
+            - task: AzureFunctionApp@1
+              inputs:
+                azureSubscription: 'MAIC - TEK Experts CR - v-doort - Group#1(9e9e1a84-e844-4b3c-a731-23d189b43a2e)'
+                appType: 'functionAppLinux'
+                appName: 'crulateAzFunc'
+                deployToSlotOrASE: true
+                resourceGroupName: 'crulateAzureFunction'
+                slotName: 'production'
+                package: '$(System.DefaultWorkingDirectory)/**/*.zip'
