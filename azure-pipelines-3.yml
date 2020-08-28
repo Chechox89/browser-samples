@@ -1,0 +1,19 @@
+
+  jobs:
+  - deployment: Deploy
+    displayName: Deploy
+    environment:
+      name: development
+    pool:
+      vmImage: vs2017-win2016
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureFunctionApp@1
+            displayName: Azure functions app deploy
+            inputs:
+              azureSubscription: bdcad02e-9258-4851-82a8-f4e8c46f48ef
+              appType: functionApp
+              appName: fa-communication-api-dev
+              package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
